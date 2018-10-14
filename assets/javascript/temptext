@@ -1,0 +1,10 @@
+**create spans for the current word
+var spanChild =document.createElement("span");
+var spantxt = document.createTextNode("-");
+spanChild.setAttribute("id",i.toString());
+spanChild.appendChild(spantxt);
+currentWord.appendChild(spanChild);
+** detect specific span and change its text
+document.getElementById("5").textContent = "H";
+
+- when user press key 

@@ -25,7 +25,7 @@ Sure, so:
     -"guessed_letter_label", "guessed_letter_content" these are h2 tag for the label and content of the guessed letters.
     -"guesses_left_lbl","guesses_left_content" these are h2 tags for the label and content of how many guesses left 
 ## Do you have any explanations how the code works?
-Sure, so I devided the code into functions i am going to list all of them and what they do:
+### Sure, so I devided the code into functions i am going to list all of them and what they do:
     -fillWithArg(string) function : this funciton will receive the word to use its length to create span tag equal to the number of 
     letters in the chosen word and assign these spans an id of the index of each letter and initiate the text with '-'.
     -searchReplaceAllIndexes(string,string) function: the search and replace function will take the chosen word and the target letter

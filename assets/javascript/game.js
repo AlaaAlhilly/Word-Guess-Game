@@ -3,7 +3,7 @@ $(document).ready(function() {
     //array to contain the words to guess
     var words = ["sound of silence","god's plan","idol","see you again","shot gun"];
     //array to contain the name of the song and the ban to show it when the user win
-    var stitel=["SOUND OF SILENCE - DISTURBED",
+    var songTitle=["SOUND OF SILENCE - DISTURBED",
                 "GOD'S PLAN - DRAKE","IDOL - BTS",
                 "SEE YOU AGAIN - WIZ KHALIFA","SHOTGUN - GEORGE EZRA"];
     //array to hold keys that pressed to prevent taken them more than once
@@ -16,6 +16,8 @@ $(document).ready(function() {
     guess_left=16;
     //audio variable to hold the song
     var audio;
+    //getting the word from a random postion from the array
+     word = words[Math.floor(Math.random() * 5)];
     //fill the tags with the approperiate text
     /*
         -current_word_label this tag will hold the label that shows the users the correct letters he guessed
@@ -52,8 +54,6 @@ $(document).ready(function() {
             }
         }
     }
-    //getting the word from a random postion from the array
-     word = words[Math.floor(Math.random() * 5)];
      //calling the fill function to fill the tag with '-'
      fillWithArg(word);
      //reset function get called when you win or lose to reset all the variables and the html contents
@@ -61,7 +61,7 @@ $(document).ready(function() {
         //showing how many user guessed the correct word
         $("#win_count").text("Wins: " + (++winer)); 
         //display the name of the song and the singer name on top of our game countainer
-        $("#songtitle").text(stitel[words.indexOf(word)]);
+        $("#songtitle").text(songTitle[words.indexOf(word)]);
         //reset all variables to the initial state
         win = 0;
         guess_left=16;

@@ -8,17 +8,17 @@ by using html and css to visualize it to users.
 ## Can you land the structure of your code?
 Sure, so:
 ### We have these variables to set in order for the game to work
-    #### Array called words will contain all the words to be guessed.
-    #### Array called songTitle will contain description of the song.
-    #### A string called keysAreadyPressed will keep any key you pressed from the keyboard and this string will be used later to prevent
+    - Array called words will contain all the words to be guessed.
+    - Array called songTitle will contain description of the song.
+    - A string called keysAreadyPressed will keep any key you pressed from the keyboard and this string will be used later to prevent
     repeativness.
-    #### Array called correctLetters will save the correct keys that you 
+    - Array called correctLetters will save the correct keys that you 
     guessed and use it later to check if you won already.
-    #### A counter called winter will increment once you win a turn.
-    #### A counter called guess_left will decrement every time you hit a key starting from 16 down to zero wich will diclare your lost.
-    #### Audio object called audio will be used to play the song that you
+    - A counter called winter will increment once you win a turn.
+    - A counter called guess_left will decrement every time you hit a key starting from 16 down to zero wich will diclare your lost.
+    - Audio object called audio will be used to play the song that you
     guessed it correctly
-    #### A string called word will chose randomly a song from the list throgh an equation Math.floor(Math.random()*5)
+    - A string called word will chose randomly a song from the list throgh an equation Math.floor(Math.random()*5)
 ## But how would you show all these elements?
 ### Well , here where html and css take place to show the player the info that the game processes, so here are the html elements used for the game
     -crrent_word_label , curent_word_content these are h2 tags for the label and the content of the current chosen word.

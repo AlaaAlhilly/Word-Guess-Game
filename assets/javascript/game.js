@@ -71,25 +71,25 @@ $(document).ready(function() {
         //filling the spans with '-' after each turn
         fillWithArg(chosenWord);
      }
-     //a function to find the song that the user guessed correctly from the path provided
-    //  function putTheSong(chosenWord){
-    //     if(typeof(audio)!="undefined"){
-    //             audio.stop();
-    //     }
-    //     playAudio("./assets/sounds/"+chosenWord+".mp3");
-    // }
-    // //a function to be called to play the song that the user guessed
-    // function playAudio(song){
-    // //instanitiate an Audio object to hold the song
-    // audio = new Audio(song);
-    // //call play function to play the song
-    // audio.play();
-    // }
-    // //a prototype stop function to stop the song
-    // Audio.prototype.stop = function(){
-    //     this.pause();
-    //     this.currentTime = 0.0;
-    // }
+    //  a function to find the song that the user guessed correctly from the path provided
+     function putTheSong(chosenWord){
+        if(typeof(audio)!="undefined"){
+                audio.stop();
+        }
+        playAudio("./assets/sounds/"+chosenWord+".mp3");
+    }
+    //a function to be called to play the song that the user guessed
+    function playAudio(song){
+    //instanitiate an Audio object to hold the song
+    audio = new Audio(song);
+    //call play function to play the song
+    audio.play();
+    }
+    //a prototype stop function to stop the song
+    Audio.prototype.stop = function(){
+        this.pause();
+        this.currentTime = 0.0;
+    }
     //a function to be called to put the image of the song that won
     function putTheImage(chosenWord){
         $("#songimage").attr("src","./assets/images/"+chosenWord+".jpg");
@@ -116,7 +116,7 @@ $(document).ready(function() {
                     //display the name of the song and the singer name on top of our game countainer
                      $("#songtitle").text(songTitle[words.indexOf(chosenWord)]);
                     //calling the function that will find the winning word as a song to play it
-                    // putTheSong(chosenWord.replace(/\s/g, ''));
+                    putTheSong(chosenWord.replace(/\s/g, ''));
                     //calling the function that will palce the image of the singer
                     putTheImage(chosenWord.replace(/\s/g, ''));
                     //reset to start another turn

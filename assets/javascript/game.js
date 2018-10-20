@@ -58,10 +58,6 @@ $(document).ready(function() {
      fillWithArg(word);
      //reset function get called when you win or lose to reset all the variables and the html contents
      function reset(){
-        //showing how many user guessed the correct word
-        $("#win_count").text("Wins: " + (++winer)); 
-        //display the name of the song and the singer name on top of our game countainer
-        $("#songtitle").text(songTitle[words.indexOf(word)]);
         //reset all variables to the initial state
         win = 0;
         guess_left=16;
@@ -115,9 +111,13 @@ $(document).ready(function() {
                 searchReplaceAllIndexes(word,event.key);
                 //if the keypress counter reached the word length then the user won
                 if(correctLetters.toString().replace(/,/g,'') == word){
+                    //showing how many user guessed the correct word
+                    $("#win_count").text("Wins: " + (++winer)); 
+                    //display the name of the song and the singer name on top of our game countainer
+                    $("#songtitle").text(songTitle[words.indexOf(word)]);
                     //calling the function that will find the winning word as a song to play it
                     putTheSong(word.replace(/\s/g, ''));
-                    //calling the function that will palce the image of the ban
+                    //calling the function that will palce the image of the singer
                     putTheImage(word.replace(/\s/g, ''));
                     //reset to start another turn
                     reset(); 

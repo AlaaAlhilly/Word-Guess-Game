@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
     //array to contain the words to guess
-    var words = ["sound of silence","god's plan","idol","see you again","shot gun"];
+    var words = ["sound of silence","gods plan","idol","see you again","shot gun"];
     //array to contain the name of the song and the ban to show it when the user win
     var songTitle=["SOUND OF SILENCE - DISTURBED",
                 "GOD'S PLAN - DRAKE","IDOL - BTS",

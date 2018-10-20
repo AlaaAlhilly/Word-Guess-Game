@@ -110,8 +110,13 @@ $(document).ready(function() {
                 //and display it in the approperiat position for the user
                 searchReplaceAllIndexes(chosenWord,event.key);
                 //if the keypress counter reached the word length then the user won
+<<<<<<< HEAD
                 if(correctLetters.toString().replace(/,/g,'') == chosenWord){
                     //showing how many user guessed the correct word
+=======
+                if(correctLetters.toString().replace(/,/g,'') == word){
+                    //showing how many times user guessed the correct word
+>>>>>>> 9f5c27a1700c1ca14811a9d54e47375b10475f84
                     $("#win_count").text("Wins: " + (++winer)); 
                     //display the name of the song and the singer name on top of our game countainer
                     $("#songtitle").text(songTitle[words.indexOf(chosenWord)]);

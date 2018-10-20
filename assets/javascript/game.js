@@ -7,17 +7,17 @@ $(document).ready(function() {
                 "GOD'S PLAN - DRAKE","IDOL - BTS",
                 "SEE YOU AGAIN - WIZ KHALIFA","SHOTGUN - GEORGE EZRA"];
     //array to hold keys that pressed to prevent taken them more than once
-    keysAlreadyPressed = "";
+    var keysAlreadyPressed = "";
     //vaiable to count if we get all letter guessed correctly to do winning actions 
-    correctLetters=[];
+    var correctLetters=[];
     //counter how many words got guessed correctly
-    winer=0;
+    var winer=0;
     //the guesses left variable 
     guess_left=16;
     //audio variable to hold the song
     var audio;
     //getting the word from a random postion from the array
-     word = words[Math.floor(Math.random() * 5)];
+     var chosenWord = words[Math.floor(Math.random() * 5)];
     //fill the tags with the approperiate text
     /*
         -current_word_label this tag will hold the label that shows the users the correct letters he guessed
@@ -32,22 +32,22 @@ $(document).ready(function() {
     $("#guesses_left_lbl").text("Guesses left");
     $("#guesses_left_content").text(guess_left);
     //function to fill the current word h2 tag with '-' to hide the correct letters
-    function fillWithArg(word){
+    function fillWithArg(chosenWord){
         //loop to the length of the word to generate spans
-        for( i=0;i<word.length;i++){
+        for( i=0;i<chosenWord.length;i++){
             //generate span with an id that hold the index of the letters in the word 
             //so we can use it when we try to change a specific span
             $("#current_word_content").append("<span id=\""+i+"\">"+"- "+"</span>");
         }
     }
     //a funciton that search the letter in every index in the word and put it in the approperiate span
-    function searchReplaceAllIndexes(word,letter){
+    function searchReplaceAllIndexes(chosenWord,letter){
         //a loop to go throw all the letters in the word
-        for( i=0;i<word.length;i++){
+        for( i=0;i<chosenWord.length;i++){
             //checking if the letter is found in the word
-            if(word.charAt(i) == letter){
+            if(chosenWord.charAt(i) == letter){
                 //push the guessed letter to the correct letters that will be used to stop the game
-                correctLetters[i] = word.charAt(i);
+                correctLetters[i] = chosenWord.charAt(i);
                 //assign the letter to the approperiate span wich generated 
                 //and assigned an id holding the positions of the letters in the word
                 $("#"+i).text(letter);
@@ -55,7 +55,7 @@ $(document).ready(function() {
         }
     }
      //calling the fill function to fill the tag with '-'
-     fillWithArg(word);
+     fillWithArg(chosenWord);
      //reset function get called when you win or lose to reset all the variables and the html contents
      function reset(){
         //reset all variables to the initial state
@@ -64,19 +64,19 @@ $(document).ready(function() {
         keyspress =0;
         correctLetters.length = 0;
         keysAlreadyPressed.length=0;
-        word = words[Math.floor(Math.random() * 5)];
+        chosenWord = words[Math.floor(Math.random() * 5)];
         $("#current_word_content").empty();
         $("#guesses_left_content").text(guess_left);
         $("#guessed_letter_content").empty();
         //filling the spans with '-' after each turn
-        fillWithArg(word);
+        fillWithArg(chosenWord);
      }
      //a function to find the song that the user guessed correctly from the path provided
-     function putTheSong(word){
+     function putTheSong(chosenWord){
         if(typeof(audio)!="undefined"){
                 audio.stop();
         }
-        playAudio("./assets/sounds/"+word+".mp3");
+        playAudio("./assets/sounds/"+chosenWord+".mp3");
     }
     //a function to be called to play the song that the user guessed
     function playAudio(song){
@@ -91,8 +91,8 @@ $(document).ready(function() {
         this.currentTime = 0.0;
     }
     //a function to be called to put the image of the song that won
-    function putTheImage(word){
-        $("#songimage").attr("src","./assets/images/"+word+".jpg");
+    function putTheImage(chosenWord){
+        $("#songimage").attr("src","./assets/images/"+chosenWord+".jpg");
     }
     //the key press event process
     $(document).keyup(function (event) {
@@ -105,20 +105,20 @@ $(document).ready(function() {
             //display the key presses in the approperiate tag
             $("#guessed_letter_content").append(event.key + ",");
             //now if the word contain the key pressed
-            if(word.includes(event.key)){
+            if(chosenWord.includes(event.key)){
                 //go to a function that will search the key in all the position 
                 //and display it in the approperiat position for the user
-                searchReplaceAllIndexes(word,event.key);
+                searchReplaceAllIndexes(chosenWord,event.key);
                 //if the keypress counter reached the word length then the user won
-                if(correctLetters.toString().replace(/,/g,'') == word){
+                if(correctLetters.toString().replace(/,/g,'') == chosenWord){
                     //showing how many user guessed the correct word
                     $("#win_count").text("Wins: " + (++winer)); 
                     //display the name of the song and the singer name on top of our game countainer
-                    $("#songtitle").text(songTitle[words.indexOf(word)]);
+                    $("#songtitle").text(songTitle[words.indexOf(chosenWord)]);
                     //calling the function that will find the winning word as a song to play it
-                    putTheSong(word.replace(/\s/g, ''));
+                    putTheSong(chosenWord.replace(/\s/g, ''));
                     //calling the function that will palce the image of the singer
-                    putTheImage(word.replace(/\s/g, ''));
+                    putTheImage(chosenWord.replace(/\s/g, ''));
                     //reset to start another turn
                     reset(); 
                 }
